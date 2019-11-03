@@ -61,7 +61,7 @@ class Particle {
 	double w, h; // The dimensions of the particle
 	double speed; // The speed of the particle
 	double angle; // The angle of the particle in radians
-	double rotation; // The rotation of the particle in degrees
+	double rotation; // The rotation of the particle in radians
 	Particle(double argX, double argY) {
 		x = argX;
 		y = argY;
@@ -73,7 +73,7 @@ class Particle {
 		rotation = Math.random() * 360;
 		// Decides on random values for the speed of the particle and the angle of the particle
 		speed = Math.random() * maxSpeed;
-		angle = Math.toRadians(Math.random() * 360);
+		angle = Math.random() * 2 * PI;
 		// Offset position a bit from the center
 		x += Math.cos(angle) * tunnelRadius;
 		y += Math.sin(angle) * tunnelRadius;
@@ -84,14 +84,14 @@ class Particle {
 		// Damps the speed
 		speed *= 1.025;
 		// Updates rotation
-		rotation += 5;
+		rotation += 0.09;
 	}
 	void show() { // Draws the particle
 		translate((float)x, (float)y);
-		rotate((float)Math.toRadians(rotation));
+		rotate((float)rotation);
 		stroke(240);
 		ellipse(0, 0, (float)(w * (distanceFromOrigin()/scaleSpeed)), (float)(h * (distanceFromOrigin()/scaleSpeed)));
-		rotate((float)Math.toRadians(-rotation));
+		rotate((float)-rotation);
 		translate(-(float)x, -(float)y);
 	}
 	double distanceFromOrigin() { // Returns the distance from the origin based on the current position
@@ -108,10 +108,10 @@ class SquareParticle extends Particle { //inherits from Particle
 	}
 	void show() {
 		translate((float)x, (float)y);
-		rotate((float)Math.toRadians(rotation));
+		rotate((float)rotation);
 		stroke(125);
 		rect(0, 0, (float)(w * (distanceFromOrigin()/scaleSpeed)), (float)(h * (distanceFromOrigin()/scaleSpeed)));
-		rotate((float)Math.toRadians(-rotation));
+		rotate((float)-rotation);
 		translate(-(float)x, -(float)y);
 	}
 }
@@ -122,12 +122,10 @@ class TriangleParticle extends Particle {
 	}
 	void show() {
 		translate((float)x, (float)y);
-		rotate((float)Math.toRadians(rotation));
+		rotate((float)rotation);
 		stroke(80);
 		triangle((float)(-(w/2) * (distanceFromOrigin()/scaleSpeed)), (float)((h/2) * (distanceFromOrigin()/scaleSpeed)), (float)((w/2) * (distanceFromOrigin()/scaleSpeed)), (float)((w/2) * (distanceFromOrigin()/scaleSpeed)), 0, (float)(-(h/2) * (distanceFromOrigin()/scaleSpeed)));
-		rotate((float)Math.toRadians(-rotation));
+		rotate((float)-rotation);
 		translate(-(float)x, -(float)y);
 	}
 }
-
-
