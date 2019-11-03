@@ -91,7 +91,7 @@ class Particle {
 		rotate((float)rotation);
 		stroke(240);
 		ellipse(0, 0, (float)(w * (distanceFromOrigin()/scaleSpeed)), (float)(h * (distanceFromOrigin()/scaleSpeed)));
-		rotate((float)-rotation);
+		rotate(-(float)rotation);
 		translate(-(float)x, -(float)y);
 	}
 	double distanceFromOrigin() { // Returns the distance from the origin based on the current position
@@ -111,7 +111,7 @@ class SquareParticle extends Particle { //inherits from Particle
 		rotate((float)rotation);
 		stroke(125);
 		rect(0, 0, (float)(w * (distanceFromOrigin()/scaleSpeed)), (float)(h * (distanceFromOrigin()/scaleSpeed)));
-		rotate((float)-rotation);
+		rotate(-(float)rotation);
 		translate(-(float)x, -(float)y);
 	}
 }
@@ -125,7 +125,7 @@ class TriangleParticle extends Particle {
 		rotate((float)rotation);
 		stroke(80);
 		triangle((float)(-(w/2) * (distanceFromOrigin()/scaleSpeed)), (float)((h/2) * (distanceFromOrigin()/scaleSpeed)), (float)((w/2) * (distanceFromOrigin()/scaleSpeed)), (float)((w/2) * (distanceFromOrigin()/scaleSpeed)), 0, (float)(-(h/2) * (distanceFromOrigin()/scaleSpeed)));
-		rotate((float)-rotation);
+		rotate(-(float)rotation);
 		translate(-(float)x, -(float)y);
 	}
 }
